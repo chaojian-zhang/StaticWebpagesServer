@@ -16,7 +16,10 @@ namespace StaticWebpagesServer
                 context.Response.Headers.Append("Cross-Origin-Embedder-Policy", "require-corp");
                 await next.Invoke();
             });
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ServeUnknownFileTypes = true
+            });
             app.MapGet("/", () => "This is a static file server!");
 
             app.Run();
