@@ -1,6 +1,18 @@
 # StaticWebpagesServer
 
-Pass as first argument the content root (folder to serve).
+Simple barebone ASP.Net Core Kestrel static file server.
+
+## Usage
+
+`StaticWebpagesServer.exe <Content Folder>`:  Pass as first argument the content root (folder to serve).
+
+Example:
+
+```bash
+./StaticWebpagesServer.exe ../MyGodotProject/publish/Web
+```
+
+(Then you need to navigate to the corresponding HTML file)
 
 ## A Comment on Godot 4 Web Publish
 
