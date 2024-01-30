@@ -4,8 +4,10 @@ namespace StaticWebpagesServer
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
+            WebApplication app = WebApplication.CreateBuilder(new WebApplicationOptions()
+            {
+                WebRootPath = args.First()
+            }).Build();
 
             app.UseStaticFiles();
             app.MapGet("/", () => "This is a static file server!");
