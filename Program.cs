@@ -6,7 +6,8 @@ namespace StaticWebpagesServer
         {
             WebApplication app = WebApplication.CreateBuilder(new WebApplicationOptions()
             {
-                WebRootPath = args.First()
+                WebRootPath = args.First(),
+                Args = args.Skip(1).ToArray()
             }).Build();
 
             app.Use(async (context, next) =>
