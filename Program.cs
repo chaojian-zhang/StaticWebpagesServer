@@ -17,11 +17,7 @@ namespace StaticWebpagesServer
                 context.Response.Headers.Append("Cross-Origin-Embedder-Policy", "require-corp");
                 await next.Invoke();
             });
-            app.UseDefaultFiles(new DefaultFilesOptions()
-            {
-                // RequestPath = "/",
-                DefaultFileNames = ["index.html"]
-            }); // Must do this before UseStaticFiles
+            app.UseDefaultFiles(); // Must do this before UseStaticFiles
             app.UseStaticFiles(new StaticFileOptions
             {
                 ServeUnknownFileTypes = true,
