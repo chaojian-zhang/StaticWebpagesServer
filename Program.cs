@@ -4,12 +4,14 @@ namespace StaticWebpagesServer
     {
         public static void Main(string[] args)
         {
-            WebApplication app = WebApplication.CreateBuilder(new WebApplicationOptions()
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(new WebApplicationOptions()
             {
                 WebRootPath = args.First(),
                 Args = args.Skip(1).ToArray()
-            }).Build();
+            });
+            builder.Services.AddLettuceEncrypt();
 
+            WebApplication app = builder.Build();
             app.Use(async (context, next) =>
             {
                 // Per: https://github.com/godotengine/godot-proposals/issues/6616
